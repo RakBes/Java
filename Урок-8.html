@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<script>
+var aValueStart=30;
+var aValueEnd=40;
+var bValueStart=20;
+var bValueEnd=25;
+
+var shot=prompt("Для выстрела введите угол наклона в градусах:");
+if (isNaN(shot)) {
+	alert("Вводить можно только числа!");
+}
+else{
+	if ((shot>aValueStart) && (shot<aValueEnd)) {
+		alert('Порожена мишень А.');
+	}
+	else if ( (shot>bValueStart)&&(shot<bValueEnd)) {
+		alert('Порожена мишень В.');
+	}
+	else{
+		alert('Промах!');
+	}
+}
+</script>
