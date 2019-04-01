@@ -1,0 +1,16 @@
+﻿<meta charset="utf-8">
+<script>
+	// do
+	// {
+	// }while(prompt("Для продолжения нажми ""Ок"" Для выхода набери 1") != 1);
+	var DepositTotal = 0;
+	var DepositSum = parseInt(prompt("Введите планируемую сумму вклада:"));
+	var DepositPercent = parseInt(prompt("Введите годовую процентную ставку:"));
+	var DepositTerm = parseInt(prompt("Введите срок хранения вклада в годах:"));
+		DepositTotal=DepositSum;
+		for (var i = 1; i <= DepositTerm; i++) {
+			DepositTotal=DepositTotal+((DepositTotal*DepositPercent)/100)
+		}
+		// DepositTotal=DepositTotal-DepositSum
+		alert("Сумма вклада: " + DepositSum + "\nПериод хранения: " + DepositTerm + " лет" + "\nПроцентная ставка: " + DepositPercent + "%" + "\nСумма накоплений сосавляет: " + DepositTotal.toFixed(2));
+</script>
