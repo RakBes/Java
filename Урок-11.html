@@ -1,0 +1,53 @@
+﻿<meta charset="utf-8">
+<script>
+    var arrRed = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
+    var arrBlack = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
+    var arrNum = []; // массив случайно выпавших чисел
+    var arrCol = []; // 0 - зеро, 1 - красное, -1 - чёрное
+    var RedFound; // Найдено ли красное при переборе массива arrRed
+    var maxRed = 0; // Максимальное кол-во красных подряд
+
+    var CountRed;
+    var colRed=0; //Всего выпавших красных
+
+    var Rounds = parseInt(prompt('Введите число раундов:'));
+
+    for(var i=0; i<Rounds; i++) {
+
+        arrNum.push(Math.round(Math.random()*36));
+
+        if (arrNum[i] == 0) {
+            arrCol.push(0); // ~~> Зеро!
+        } else {
+            RedFound = false;
+            for (j=0; j<18; j++) { // Перебираем массив arrRed, ищем совпадение с красным
+                if (arrNum[i] == arrRed[j]) {
+                    arrCol.push('R'); // ~~> Красное!
+                    RedFound = true;
+                    break;
+                }
+            }
+            if (!RedFound) {
+            arrCol.push('B'); // ~~> Чёрное!
+            }
+        }
+    }
+
+    alert('Выпавшие:' + '\n- числа: ' + arrNum + '\n  - цвет: ' + arrCol);
+
+    // Ищем максимально длинную красную последовательность
+    for(i=0; i<Rounds; i++){
+        if (arrCol[i] == 'R') {
+            CountRed = 0;
+            while (i<Rounds && arrCol[i] == 'R'){
+                colRed++;
+                CountRed++;
+                i++;
+            }
+            if (CountRed > maxRed) {
+                maxRed = CountRed;
+            }
+        }
+    }
+    alert('Всего раундов: ' + Rounds +'\n\nКол-во красных: ' + colRed + '\nМакс. длинна красной последовательности: ' + maxRed);
+</script>
