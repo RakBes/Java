@@ -16,7 +16,7 @@ class Lesson3 {
     public static void main(String[] args) {
 
         while (true) {
-            System.out.print("Играем? Выбери игру (1 или 2):\n1. Угадай число\n2. Угадай слово\n3. Выход\n=> ");
+            System.out.print("Играем? Выбери игру (1 или 2):\n1. Угадай число\n2. Угадай слово\n3.  Выход\n=> ");
             switch (scanner.next()) {
                 case "1":
                     guessMyNumber();
