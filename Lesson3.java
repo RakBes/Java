@@ -1,8 +1,8 @@
 /**
  * Java-1; Lesson-3;
  *
- * @author: Раков Валерий;
- * @version dated: 7 июня 2019 года
+ * @author: Урюпин Сергей; Раков Валерий;
+ * @version dated: 8 июня 2019 года
  */
 
 import java.util.Random;
