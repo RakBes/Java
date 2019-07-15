@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<script>
+    function getRandomInt(min, max){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getCard(){
+        var cards = ["6", "7", "8", "9", "10", "J", "D", "K", "A"];
+        return cards[getRandomInt(0, cards.length - 1)];
+    }
+
+    function getSum(arrValue){
+        var sum = 0;
+        for (i=0; i<arrValue.length; i++) {
+            if (isNaN(arrValue[i]) && arrValue[i]=='A'){
+                sum = sum + 11;
+            } else if (isNaN(arrValue[i]) && arrValue[i] != 'A') {
+                sum = sum + 10; 
+            } else {
+                sum = sum + parseInt(arrValue[i]);
+            }
+        }
+        return(sum);
+    }
+
+    function ItogGames(DealerCount, PlayerCount){
+        if (DealerCount > 21) {
+            DealerCount = 0;
+        }
+        if (PlayerCount > 21) {
+            PlayerCount=0;
+        }
+        if (DealerCount >= PlayerCount) {
+            return 'Диллер, Выиграл!';
+        } else if (DealerCount < PlayerCount) {
+            return 'Вы Выграли, Позравляю!!!';
+        }
+    }
+
+    var GameBlackJack = prompt("Игра BLACK JACK!!! Играем? Enter - Да; Esc - Нет;");
+
+    if (GameBlackJack == '') {
+        alert('Раздать карты...');
+        do {
+            var dealer = [];
+            var player = [];
+            var x = 0;
+            var DealerCount = 0;
+            var PlayerCount = 0;
+            var DealerPerebor;
+            var PlayerPerebor;
+
+            var itogGames;
+            do {
+                x++;
+                player.push(getCard());
+                PlayerCount = getSum(player);
+
+                alert('Кол-во карт: ' + x + '\nКарты: ' + player + '; Сумма очков: ' + PlayerCount);
+
+                if (PlayerCount > 21) {
+                    alert('Перебор: ' + PlayerCount)
+                    //continue;
+                    break;
+                }
+            } while (prompt("Ещё карту? Enter - Да; Esc - Нет;") == '');
+            while (DealerCount < 21) {
+                
+                if ( DealerCount >= 18) {
+                    break;
+                }
+                dealer.push(getCard());
+                DealerCount = getSum(dealer);
+            } 
+            itogGames = ItogGames(DealerCount, PlayerCount)
+            alert('Диллер:' + '\nКарты: ' + dealer.join('; ') + '; Сумма очков: ' + getSum(dealer) + '\nИгрок:' + '\nКарты: ' + player.join('; ') + '; Сумма очков: ' + getSum(player) + '\n\nИтог игры: ' + itogGames);
+        } while (prompt("Играем ещё? Enter - Да; Esc - Нет;") == '');
+    } else {
+
+        alert("Ну, ладно. С играем в следующий раз...");
+    }
+
+</script>
